@@ -1,5 +1,7 @@
 {
   "name": "revelamiento_visual",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
