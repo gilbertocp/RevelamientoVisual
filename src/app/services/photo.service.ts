@@ -24,7 +24,7 @@ export class PhotoService {
     private storage: AngularFireStorage,
     private db: AngularFirestore,
     private iab: InAppBrowser,
-  ) { }
+  ) {  }
 
   loadPhotosUser(): void {
     const photos$ = this.db
@@ -53,7 +53,6 @@ export class PhotoService {
           metadata: await ref.getMetadata(),
           ref: ref
         });
-
       });
       this.enEspera = false;
     });
@@ -89,6 +88,8 @@ export class PhotoService {
   }
 
   uploadImg(url: string): void {
+    this.enEspera = true;
+
     const directory = url.substr(0, url.lastIndexOf('/') + 1);
     const fileName = url.substr(url.lastIndexOf('/') + 1);
     console.log(directory, fileName);
