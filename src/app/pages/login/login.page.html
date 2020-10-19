@@ -1,0 +1,69 @@
+
+
+<ion-content color="primary">
+  <!-- header -->
+  <ion-header class="header">
+    <ion-header class="ion-no-border">
+      <ion-toolbar color="primary">
+        <ion-title>
+          <ion-grid>
+            <div id="login-title">
+              <ion-text color="light">Carga De Crédito App</ion-text> &nbsp;
+              <img src="/assets/icon.png" alt="" width="25" height="25">
+            </div>
+          </ion-grid>
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+  </ion-header>
+
+  <!-- login Form -->
+  <ion-card class="login">
+    <div class="login__img">
+      <img src="/assets/icon.png" width="150" height="150"/>
+    </div>
+
+    <ion-card-content>
+      <form (ngSubmit)="onLogin()">
+        <ion-item>
+          <ion-label position="floating">Ingrese su correo</ion-label>
+          <ion-input type="email" [(ngModel)]="email" name="email" id="email" ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Ingrese su clave</ion-label>
+          <ion-input type="password" [(ngModel)]="password" name="password" id="password"></ion-input>
+        </ion-item>
+
+        <ion-button expand="full" id="submit" type="submit">
+          <ion-spinner name="circles" *ngIf="spinner"></ion-spinner> &nbsp;
+          <ion-text color="light">{{!spinner ? 'Iniciar Sesión': 'Cargando'}}</ion-text>
+        </ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
+<ion-fab horizontal="start" vertical="bottom">
+  <ion-fab-button color="tertiary">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+  <ion-fab-list side="top">
+    <ion-button color="light" id="administrador" (click)="loginUsersButtons($event)">
+      Administrador
+    </ion-button>
+    <ion-button color="light" id="invitado" (click)="loginUsersButtons($event)">
+      Invitado
+    </ion-button>
+    <ion-button color="light" id="usuario" (click)="loginUsersButtons($event)">
+      Usuario
+    </ion-button>
+    <ion-button color="light" id="anonimo" (click)="loginUsersButtons($event)">
+      Anonimo
+    </ion-button>
+    <ion-button color="light" id="tester" (click)="loginUsersButtons($event)"> 
+      Tester
+    </ion-button>
+  </ion-fab-list>
+</ion-fab>

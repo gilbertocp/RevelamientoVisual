@@ -1,0 +1,13 @@
+<app-header [title]="'Inicio'"></app-header>
+
+<ion-content>
+  <ion-button expand="full" style="height: 50%;">
+    <ion-text color="light" style="font-size: 30px;" (click)="goCloud('cosas-lindas')">Cosas Lindas</ion-text> &nbsp;
+    <ion-icon name="thumbs-up" color="light" size="large"></ion-icon>
+  </ion-button>
+
+  <ion-button expand="full" style="height: 50%;">
+    <ion-text color="light" style="font-size: 30px;" (click)="goCloud('cosas-feas')">Cosas Feas</ion-text> &nbsp;
+    <ion-icon name="thumbs-down" color="light" size="large"></ion-icon>
+  </ion-button>
+</ion-content>

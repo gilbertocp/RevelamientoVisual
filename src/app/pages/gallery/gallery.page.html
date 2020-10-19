@@ -1,0 +1,56 @@
+<app-header [title]="'Galeria'"></app-header>
+
+<ion-content>
+  <!-- chooser -->
+  <ion-segment [(ngModel)]="sectionDir" color="primary">
+    <ion-segment-button value="cosas-lindas" #clBtn (click)="changeSection(clBtn.value)">
+      Cosas Lindas
+    </ion-segment-button>
+    <ion-segment-button value="cosas-feas" #cfBtn (click)="changeSection(cfBtn.value)">
+      Cosas Feas
+    </ion-segment-button>
+  </ion-segment>
+
+    <!-- Spinner -->
+  <div style="display: block;text-align: center;margin-top: 10px;" *ngIf="enEspera">
+    <ion-spinner name="dots"></ion-spinner>
+  </div>
+
+  <!-- refresher -->
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <!-- gallery -->
+  <ion-grid *ngIf="!enEspera">
+    <ion-row size="12">
+      <ion-card class="post" *ngFor="let file of files">
+        <ion-chip>
+          <ion-avatar>
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjYzVkYmZmIiBkPSJNMCAwaDUxMnY1MTJIMHoiLz48cGF0aCBkPSJNMjU2IDMwNGM2MS42IDAgMTEyLTUwLjQgMTEyLTExMlMzMTcuNiA4MCAyNTYgODBzLTExMiA1MC40LTExMiAxMTIgNTAuNCAxMTIgMTEyIDExMnptMCA0MGMtNzQuMiAwLTIyNCAzNy44LTIyNCAxMTJ2NTZoNDQ4di01NmMwLTc0LjItMTQ5LjgtMTEyLTIyNC0xMTJ6IiBmaWxsPSIjODJhZWZmIi8+PC9zdmc+" />
+          </ion-avatar>
+          <ion-label>{{file.correo}}</ion-label>
+        </ion-chip>
+        <hr>
+        <img [src]="file.url" class="cardImg" />
+        <ion-card-content>
+          <hr>
+          <ion-item>
+            <ion-label color="dark">Votos</ion-label>
+            <ion-note slot="end" color="tertiary" style="font-size: 13px;">{{this.votos? this.getVotesCurrentPhoto(file.path): 0}}</ion-note>
+          </ion-item>
+
+          <ion-item>
+            <ion-label color="dark">Fecha Subida</ion-label>
+            <ion-note slot="end" color="tertiary" style="font-size: 13px;">{{file.subido | date:'dd/MM/yyyy'}}</ion-note>
+          </ion-item>
+          <hr>
+          <ion-button #voteBtn expand="full" color="tertiary" (click)="vote(file)">
+            <ion-icon [name]="this.checkIfCurrentUserVoted(file)? 'thumbs-up': 'thumbs-up-outline'" color="light"></ion-icon> &nbsp;
+            <ion-text color="light">{{this.checkIfCurrentUserVoted(file) ? 'Votado' : 'Votar'}}</ion-text>
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+</ion-content>

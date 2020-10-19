@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar [color]="back? 'tertiary' :'primary'">
+    <ion-buttons slot="start">
+      <ion-button color="light" (click)="logout()" *ngIf="!back">
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
+
+      <ion-back-button color="light" defaultHref="tabs" icon="chevron-back" *ngIf="back"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title color="light">{{title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
