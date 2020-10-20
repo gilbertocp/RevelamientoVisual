@@ -26,8 +26,6 @@ export class GalleryPage implements OnInit {
     private votosSvc: VotosService,
     private route: ActivatedRoute
   ) { 
-    console.log('constructor');
-    
     this.authSvc.getCurrentUser()
     .subscribe(user => this.currentUser = user.uid);
 

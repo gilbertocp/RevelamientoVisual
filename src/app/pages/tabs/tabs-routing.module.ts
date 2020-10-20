@@ -16,10 +16,6 @@ const routes: Routes = [
         path: 'gallery',
         loadChildren: () => import('../gallery/gallery.module').then( m => m.GalleryPageModule)
       },
-      {
-        path: 'charts',
-        loadChildren: () => import('../charts/charts.module').then( m => m.ChartsPageModule)
-      },
     ]
   },
   {
