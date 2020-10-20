@@ -32,7 +32,7 @@ export class AuthService {
     return false;
   }
 
-  getCurrentUser(): Promise<User> {
-    return this.afAuth.authState.pipe(first()).toPromise();
+  getCurrentUser(): Observable<User> {
+    return this.afAuth.authState;
   }
 }

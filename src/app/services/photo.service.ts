@@ -78,7 +78,7 @@ export class PhotoService {
   }
 
   takePic(): void {
-    this.camera.getPicture({cameraDirection: Direction.BACK})
+    this.camera.getPicture({cameraDirection: Direction.BACK, correctOrientation: true })
     .then(imageData => {
       this.uploadImg(imageData);
     })

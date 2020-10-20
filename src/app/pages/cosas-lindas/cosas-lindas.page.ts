@@ -12,7 +12,7 @@ export class CosasLindasPage implements OnInit {
 
   constructor(public photoSvc: PhotoService, private authSvc: AuthService, private usuariosSvc: UsuariosService) { 
     this.authSvc.getCurrentUser()
-    .then(user => {
+    .subscribe(user => {
       this.photoSvc.userDir = user.uid;
       this.photoSvc.sectionDir = 'cosas-lindas';
       this.photoSvc.loadFiles();

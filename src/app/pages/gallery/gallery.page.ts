@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { ActivatedRoute } from '@angular/router';
 import { first, take } from 'rxjs/operators';
 import { AuthService } from '../../services/auth.service';
 import { UsuariosService } from '../../services/usuarios.service';
@@ -22,10 +23,11 @@ export class GalleryPage implements OnInit {
     private db: AngularFirestore, 
     private authSvc: AuthService, 
     private usuariosSvc: UsuariosService,
-    private votosSvc: VotosService
+    private votosSvc: VotosService,
+    private route: ActivatedRoute
   ) { 
     this.authSvc.getCurrentUser()
-    .then(user => this.currentUser = user.uid);
+    .subscribe(user => this.currentUser = user.uid);
 
     this.votosSvc.getVotos.subscribe(
       votos => {
@@ -35,10 +37,11 @@ export class GalleryPage implements OnInit {
         console.log(err);
       }
     );
+
+    this.route.url.subscribe(() => this.loadFiles());
   }
 
   ngOnInit() {
-    this.loadFiles();
   }
 
   changeSection(): void {
