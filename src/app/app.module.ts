@@ -17,6 +17,8 @@ import { Camera } from '@ionic-native/camera/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
+import { ChartsModule } from 'ng2-charts';
+
 
 import { environment } from '../environments/environment';
 
@@ -30,7 +32,8 @@ import { environment } from '../environments/environment';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFireStorageModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    ChartsModule
   ],
   providers: [
     StatusBar,

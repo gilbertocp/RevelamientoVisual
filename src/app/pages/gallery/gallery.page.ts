@@ -24,6 +24,8 @@ export class GalleryPage implements OnInit {
     private usuariosSvc: UsuariosService,
     private votosSvc: VotosService
   ) { 
+    console.log('constructor');
+    
     this.authSvc.getCurrentUser()
     .then(user => this.currentUser = user.uid);
 
@@ -39,6 +41,8 @@ export class GalleryPage implements OnInit {
 
   ngOnInit() {
     this.loadFiles();
+    console.log('on init');
+    
   }
 
   changeSection(): void {

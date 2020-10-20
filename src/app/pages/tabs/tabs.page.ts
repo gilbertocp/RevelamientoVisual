@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabsPage implements OnInit {
 
+  changeColor: boolean = false;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  cambio(e): void {
+    if(e.tab === 'charts') {
+      this.changeColor = true;
+    } else {
+      this.changeColor = false;
+    }
+  }
 }

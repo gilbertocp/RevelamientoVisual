@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { User } from 'firebase';
-import { Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
 
 @Injectable({
@@ -21,7 +19,7 @@ export class AuthService {
   }
 
   logout(): void {
-    this.afAuth.signOut();
+    this.afAuth.signOut().then(() => console.log('Deslogado'), () => console.log('Error'));
     localStorage.removeItem('rev_visual_login');
   }
 

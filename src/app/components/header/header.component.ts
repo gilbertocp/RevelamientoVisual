@@ -11,10 +11,12 @@ export class HeaderComponent implements OnInit {
 
   @Input() title: string;
   @Input() back: boolean;
+  @Input() color: string = 'primary';
 
-  constructor(private authSvc: AuthService, private router: Router) { }
+  constructor(public authSvc: AuthService, private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   logout() {
     this.authSvc.logout();
