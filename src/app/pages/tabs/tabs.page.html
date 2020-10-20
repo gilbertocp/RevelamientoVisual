@@ -1,13 +1,18 @@
-<ion-tabs color="primary">
-  <ion-tab-bar slot="home" color="primary">
-    <ion-tab-button tab="home">
-      <ion-icon color="light" name="home-outline"></ion-icon>
+<ion-tabs (ionTabsWillChange)="cambio($event)">
+  <ion-tab-bar slot="home" [color]="changeColor? 'tertiary': 'primary'">
+    <ion-tab-button tab="home" #tabInicio>
+      <ion-icon color="light" [name]="tabInicio.selected ?'home':'home-outline'"></ion-icon>
       <ion-label color="light">Inicio</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="gallery">
-      <ion-icon color="light" name="images-outline"></ion-icon>
+    <ion-tab-button tab="gallery" #tabGallery>
+      <ion-icon color="light" [name]="tabGallery.selected? 'images': 'images-outline'"></ion-icon>
       <ion-label color="light">Galeria</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="charts" #tabCharts>
+      <ion-icon color="light" [name]="tabCharts.selected ?'pie-chart':'pie-chart-outline'"></ion-icon>
+      <ion-label color="light">Graficas</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>

@@ -25,6 +25,7 @@ const routes: Routes = [
     path: 'cosas-feas',
     loadChildren: () => import('./pages/cosas-feas/cosas-feas.module').then( m => m.CosasFeasPageModule)
   },
+
 ];
 
 @NgModule({
